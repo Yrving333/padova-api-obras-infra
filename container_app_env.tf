@@ -14,4 +14,10 @@ resource "azurerm_container_app_environment" "cae_01" {
   location                   = azurerm_resource_group.rg_01.location
   log_analytics_workspace_id = azurerm_log_analytics_workspace.log_01.id
   tags                       = var.tags
+
+  # Azure asigna este perfil por defecto; se declara en el codigo para evitar drift en el plan
+  workload_profile {
+    name                  = "Consumption"
+    workload_profile_type = "Consumption"
+  }
 }
