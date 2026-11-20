@@ -33,15 +33,14 @@ Repositorio de la aplicación: `padova-api-obras`.
 | Archivo | Recursos |
 |---|---|
 | `provider.tf` | azurerm `=4.51.0`, random, time |
-| `locals.tf` | región de SQL e imagen completa (`<acr>/<repo>:<tag>`) |
 | `resource_group.tf` | `rg_01` |
 | `identity_user_assigned.tf` | `identity_01` |
 | `registry.tf` | `acr_01` (Basic, sin admin) y rol `AcrPull` para la identity |
 | `keyvault.tf` | `kv_01` (RBAC), roles, `secreto-demo`, `db-user`, `db-password` (generado con `random_password`) |
 | `storage_account.tf` | `st_01`, contenedor `imagenes`, blob `fachada.jpg`, rol de lectura, espera de propagación de roles |
-| `sql_database.tf` | `sql_01` (servidor), `sqldb_01` (Basic, 2 GB), firewall "servicios de Azure" y, opcionalmente, tu IP |
+| `sql_database.tf` | región de SQL (`local`), `sql_01` (servidor), `sqldb_01` (Basic, 2 GB), firewall "servicios de Azure" y, opcionalmente, tu IP |
 | `container_app_env.tf` | `log_01`, `cae_01` |
-| `container_app.tf` | `aca_01`: registry con identity, secretos desde Key Vault, variables de entorno, probes, escalado 0..3 |
+| `container_app.tf` | imagen completa `<acr>/<repo>:<tag>` (`local`), `aca_01`: registry con identity, secretos desde Key Vault, variables de entorno, probes, escalado 0..3 |
 | `output.tf` | URL de la app y de cada endpoint, ACR, Key Vault, SQL |
 | `variables.tf` / `terraform.tfvars.example` | todo variabilizado: nombres, SKUs, CPU/memoria, réplicas, región |
 

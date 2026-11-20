@@ -1,3 +1,8 @@
+# Region de SQL: la del resource group salvo que se indique otra en variables
+locals {
+  sql_location = var.sql_location == "" ? azurerm_resource_group.rg_01.location : var.sql_location
+}
+
 # Base de datos PaaS (sesion 7): servidor logico + base de datos Basic (5 DTU, 2 GB)
 resource "azurerm_mssql_server" "sql_01" {
   name                          = var.sql_01_name

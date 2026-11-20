@@ -1,3 +1,8 @@
+# Imagen que se despliega: <acr>.azurecr.io/<repo>:<rama-commit>
+locals {
+  imagen = "${azurerm_container_registry.acr_01.login_server}/${var.imagen_repo}:${var.imagen_tag}"
+}
+
 resource "azurerm_container_app" "aca_01" {
   name                         = var.aca_01_name
   container_app_environment_id = azurerm_container_app_environment.cae_01.id
