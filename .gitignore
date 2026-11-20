@@ -1,0 +1,27 @@
+# Terraform: carpeta de providers/modulos descargados
+.terraform/
+.terraform.lock.hcl.bak
+
+# Estado: contiene datos sensibles (incluido el password de la BD)
+*.tfstate
+*.tfstate.*
+
+# Valores reales de variables (subscription, secretos)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Planes guardados y logs
+*.tfplan
+crash.log
+crash.*.log
+
+# Overrides locales
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config
+.terraformrc
+terraform.rc

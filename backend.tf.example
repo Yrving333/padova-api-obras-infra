@@ -1,0 +1,16 @@
+# OPCIONAL (tema de la sesion 7): estado remoto en un Storage Account.
+# 1) Crear una vez el storage del estado (fuera de este proyecto):
+#    az group create -n rg-tfstate-dev-eastus2-001 -l eastus2
+#    az storage account create -n sttfstateyleus2001 -g rg-tfstate-dev-eastus2-001 --sku Standard_LRS
+#    az storage container create -n tfstate --account-name sttfstateyleus2001 --auth-mode login
+# 2) Renombrar este archivo a backend.tf y ejecutar: terraform init -migrate-state
+
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "rg-tfstate-dev-eastus2-001"
+    storage_account_name = "sttfstateyleus2001"
+    container_name       = "tfstate"
+    key                  = "api-obras/dev.tfstate"
+    use_azuread_auth     = true
+  }
+}

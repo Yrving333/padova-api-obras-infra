@@ -1,0 +1,59 @@
+# Copia este archivo como terraform.tfvars y completa los valores.
+# terraform.tfvars NO se sube a Git (esta en .gitignore).
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "eastus2"
+
+tags = {
+  Environment = "Desarrollo"
+  Department  = "TI"
+  Clase       = "DMC-EvaluacionFinal"
+  Project     = "api-obras"
+  Company     = "Grupo Padova"
+  Requester   = "Yrving Leon"
+}
+
+// RESOURCE GROUP 01 ---------------------------------------------------------
+rg_01_name = "rg-apiobras-dev-eastus2-001"
+
+// LOG ANALYTICS 01 ----------------------------------------------------------
+log_01_name = "log-apiobras-dev-eastus2-001"
+
+// CONTAINER APP ENVIRONMENT 01 / CONTAINER APP 01 ---------------------------
+cae_01_name   = "cae-apiobras-dev-eastus2-001"
+aca_01_name   = "ca-apiobras-dev-eastus2-001"
+aca_01_cpu    = 0.5
+aca_01_memory = "1Gi"
+
+// IDENTITY 01 ---------------------------------------------------------------
+identity_01_name = "id-apiobras-dev-eastus2-001"
+
+// NOMBRES GLOBALES (si ya existen, sube el correlativo: 002, 003...) --------
+kv_01_name  = "kvapiobrasyldeveus2001"   // Key Vault: sin guiones, max 24
+st_01_name  = "stapiobrasyleastus2001"   // Storage: minusculas y numeros, max 24
+acr_01_name = "acrapiobrasyldeveastus2001" // ACR: solo letras y numeros
+sql_01_name = "sql-apiobras-yl-dev-eastus2-001"
+
+// SKUS (minimo necesario) ---------------------------------------------------
+acr_01_sku           = "Basic"
+sqldb_01_name        = "sqldb-apiobras-dev-eastus2-001"
+sqldb_01_sku         = "Basic" // 5 DTU, 2 GB
+sqldb_01_max_size_gb = 2
+sql_location         = "" // vacio = misma region; si da error de region prueba "westus2"
+
+// ESCALADO: 2 usuarios -> escala a cero (primera visita tarda 10-20 s) ------
+min_replicas             = 0
+max_replicas             = 3
+concurrencia_por_replica = 50
+
+// APLICACION ----------------------------------------------------------------
+imagen_repo   = "api-obras"
+imagen_tag    = "main-xxxxxxx" // lo imprime: .\scripts\deploy.ps1 -AcrName <acr> -SoloPublicar
+target_port   = 8080
+nombre_alumno = "Yrving Leon"
+mi_variable   = "Grupo Padova - ambiente dev"
+secreto_valor = "Clave-demo-Padova-2026"
+
+// BASE DE DATOS -------------------------------------------------------------
+db_admin_user = "padovaadmin"
+mi_ip_publica = "" // tu IP (https://ifconfig.me) para el Query editor del portal
