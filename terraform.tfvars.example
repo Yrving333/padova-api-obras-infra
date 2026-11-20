@@ -32,14 +32,14 @@ identity_01_name = "id-apiobras-dev-eastus2-001"
 kv_01_name  = "kvapiobrasyldeveus2001"   // Key Vault: sin guiones, max 24
 st_01_name  = "stapiobrasyleastus2001"   // Storage: minusculas y numeros, max 24
 acr_01_name = "acrapiobrasyldeveastus2001" // ACR: solo letras y numeros
-sql_01_name = "sql-apiobras-yl-dev-eastus2-001"
+sql_01_name = "sql-apiobras-yl-dev-centralus-001"
 
 // SKUS (minimo necesario) ---------------------------------------------------
 acr_01_sku           = "Basic"
-sqldb_01_name        = "sqldb-apiobras-dev-eastus2-001"
+sqldb_01_name        = "sqldb-apiobras-dev-centralus-001"
 sqldb_01_sku         = "Basic" // 5 DTU, 2 GB
 sqldb_01_max_size_gb = 2
-sql_location         = "" // vacio = misma region; si da error de region prueba "westus2"
+sql_location         = "centralus" // eastus, eastus2 y westus2: ProvisioningDisabled para SQL en la suscripcion
 
 // ESCALADO: 2 usuarios -> escala a cero (primera visita tarda 10-20 s) ------
 min_replicas             = 0
